@@ -36,19 +36,6 @@
       loopNfeedback(e){
         this.$emit('next', e, this.excelMetaData)
 
-      },
-      // init() { 
-      //   this.jsonData = this.excelMetaData.data
-      //   this.fields = this.excelMetaData.fields
-      //   this.select = this.excelMetaData.selects
-      // },
-    },
-
-    watch: {
-      excelMetaData: function(new_value) { 
-        // this.init()
-        console.log('watch did something for me')
-        
       }
     }
   }
