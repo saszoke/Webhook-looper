@@ -21,9 +21,14 @@
                 ></v-text-field>
             </v-form>
           <v-btn
-            color="primary"
+            color="rgb(0 142 175)"
+            :dark="stepOneDone"
             :disabled="!stepOneDone"
-            @click="$emit('next', $event, {URL,apiUser,apiPassword})"
+            @click="()=>{
+              setProxyFromVue()
+              $emit('next', event, {URL,apiUser,apiPassword} )
+            }"
+            
           >
             Continue
           </v-btn>
@@ -31,6 +36,7 @@
 </template>
 
 <script>
+  import { setProxy } from '../plugins/setProxy';
 
   export default {
     name: 'AuthWidget',
@@ -40,6 +46,7 @@
       apiPassword: '',
       stepOneDone: false,
       URL: '',
+      event: '',
       rules: [
           value => !!value || 'Required.',
           value => (value && value.length >= 3) || 'Min 3 characters',
@@ -61,6 +68,16 @@
         this.apiPassword = ''
         this.URL = ''
       },
+
+      setProxy,
+
+      setProxyFromVue(){
+        try{
+          setProxy(this.URL)
+        }catch{
+          console.log('Vue catched the error')
+        }
+      }
 
     }
   }

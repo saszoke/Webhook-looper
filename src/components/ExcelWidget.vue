@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-file-input label=".xlsx file" v-model="file" transition="scale-transition"></v-file-input>
-    <v-btn @click="readInput($event,file)" transition="scale-transition" color="primary" :loading="load">Read</v-btn>
+    <v-btn @click="readInput($event,file)" transition="scale-transition" color="rgb(0 142 175)" dark :loading="load">Read</v-btn>
     <v-btn @click="$emit('prev')" transition="scale-transition" class="mx-5">Back</v-btn>
   </v-container>
 </template>
