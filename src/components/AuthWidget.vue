@@ -25,7 +25,6 @@
             :dark="stepOneDone"
             :disabled="!stepOneDone"
             @click="()=>{
-              setProxyFromVue()
               $emit('next', event, {URL,apiUser,apiPassword} )
             }"
             

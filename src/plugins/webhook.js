@@ -23,7 +23,7 @@ export function postWebHook(receivedObj){
                         'password': receivedObj.authData.apiPassword
                         },
                     'body': finalObj,
-                    'URL': 'http://localhost:3001/'
+                    'URL': receivedObj.authData.URL
                     }
                     )
 
