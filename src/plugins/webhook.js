@@ -18,13 +18,14 @@ export function postWebHook(receivedObj){
                 ++startIndex;
         
                 let resp = await sendPost(
-                    {'authentication': {
-                        'username': receivedObj.authData.apiUser,
-                        'password': receivedObj.authData.apiPassword
-                        },
-                    'body': finalObj,
-                    'URL': 'http://localhost:3001/'
-                    }
+                        {
+                            'authentication': {
+                                'username': receivedObj.authData.apiUser,
+                                'password': receivedObj.authData.apiPassword
+                            },
+                            'body': finalObj,
+                            'URL': 'http://localhost:3002/' + receivedObj.authData.URL.substring(8)
+                        }
                     )
 
                 if (resp.status > 300){
@@ -50,7 +51,7 @@ export function postWebHook(receivedObj){
 
         
         
-    }, 200);
+    }, receivedObj.loopTimeBreak);
 
 
 

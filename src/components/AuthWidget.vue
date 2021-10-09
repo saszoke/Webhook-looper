@@ -53,7 +53,7 @@
         ],
         URLrules: [
           value => !!value || 'Required.',
-          value => (value && value.includes("https://")) || 'Valid URL',
+          value => (value && value.includes("https://") && value.includes("/services/action-v1/api/webhooks/")) || 'Invalid URL',
         ],
         PWrules: [
           value => !!value || 'Required.',

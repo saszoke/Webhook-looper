@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export async function sendPost(parameters){
+
+        console.log(parameters.body)
         
         let token = `${parameters.authentication.username}:${parameters.authentication.password}`;
         let encodedToken = Buffer.from(token).toString('base64');
@@ -12,7 +14,7 @@ export async function sendPost(parameters){
             headers: { 
                 'Authorization': `Basic ${encodedToken}`, 
             },
-            data : parameters.body
+            data: parameters.body
         };
 
         await axios(config)

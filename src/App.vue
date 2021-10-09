@@ -90,7 +90,7 @@ export default {
     receiveDataStep2(e, params){
       this.meta = params
       this.step++
-      postWebHook({authData: this.options, metaData: this.meta})
+      postWebHook({authData: this.options, metaData: this.meta, loopTimeBreak: 500})
     },
 
     postWebHook,

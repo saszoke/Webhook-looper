@@ -62,12 +62,16 @@
 
     computed: {
       prettyPreview(){
-        let final = ''
+        let final = '{ '
         
         try{
-          Object.values(this.preview.selects).forEach(element => {
-            final += element + ': ' + '"' + this.preview.data[0][element] + '"' + ',\n'
-          });
+
+          for (let i = 0; i < this.preview.selects.length ; i++){
+            final +=  Object.values(this.preview.selects)[i] + ': ' + '"' + this.preview.data[0][Object.values(this.preview.selects)[i]] + '"'
+            if (i != (this.preview.selects.length - 1))  final+= ',\n'
+            else final+= ' }'
+          }
+
         } catch {()=>{}}
 
         return final
