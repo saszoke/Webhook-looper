@@ -25,6 +25,7 @@
             :dark="stepOneDone"
             :disabled="!stepOneDone"
             @click="()=>{
+              setProxyFromVue()
               $emit('next', event, {URL,apiUser,apiPassword} )
             }"
             
@@ -74,7 +75,7 @@
         try{
           setProxy(this.URL)
         }catch{
-          console.log('Vue catched the error')
+          console.log('Vue catched the error while setting the proxy.')
         }
       }
 
