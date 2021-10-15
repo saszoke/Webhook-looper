@@ -25,7 +25,6 @@
             :dark="stepOneDone"
             :disabled="!stepOneDone"
             @click="()=>{
-              setProxyFromVue()
               $emit('next', event, {URL,apiUser,apiPassword} )
             }"
             
@@ -36,7 +35,6 @@
 </template>
 
 <script>
-  import { setProxy } from '../plugins/setProxy';
 
   export default {
     name: 'AuthWidget',
@@ -67,16 +65,6 @@
         this.apiUser = ''
         this.apiPassword = ''
         this.URL = ''
-      },
-
-      setProxy,
-
-      setProxyFromVue(){
-        try{
-          setProxy(this.URL)
-        }catch{
-          console.log('Vue catched the error while setting the proxy.')
-        }
       }
 
     }

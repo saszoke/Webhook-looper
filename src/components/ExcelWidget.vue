@@ -39,8 +39,6 @@
         this.select = []
       },
 
-      // logMount(){console.log('I AM MOUNTED')}
-
     }
   }
 </script>

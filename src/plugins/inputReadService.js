@@ -16,18 +16,25 @@ export function readXLSx(fileUpload){
             let workbook = XLSX.read(data,{type:"binary"});
             jsonObj = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[workbook.SheetNames[0]]);
         }
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(jsonObj); 
-            }, 2000);
-
-            setTimeout(() => {
-                if (jsonObj == undefined){
-                const errorObject = {
-                    msg: 'An error occured',
+        return new Promise((resolve)=>{
+            let timeout = 0
+            
+            let myInterval = setInterval(() => {
+                if (jsonObj != undefined){
+                    resolve(jsonObj)
+                    clearInterval(myInterval)
+                    console.log("Request time: "+ timeout)
+                } else {
+                    timeout++
+    
+                    if (timeout == 1000){
+                        setTimeout(() => {
+                            clearInterval(myInterval)
+                            console.log('Timeout...!')
+                            resolve(jsonObj)
+                        }, 2000);
+                    }
                 }
-                reject(errorObject);
-                }
-            }, 2000);
-        });
+            }, 1);
+        })
     }   
