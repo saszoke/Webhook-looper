@@ -10,6 +10,12 @@ npm install
 npm run serve
 ```
 
+### Spin up proxy server (hard-coded localhost port 3002) NOTE: without the proxy server, the requests are going to fail (thanks to CORS error)
+```
+cd proxy
+node customProxy.js
+```
+
 ### Compiles and minifies for production
 ```
 npm run build
